@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>News Page</title>
+</head>
+<body>
+
+<div class="news-container">
+    <header>
+        <h1>News Page</h1>
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+            <button class="search-btn">Search</button>
+        </div>
+    </header>
+
+    <div class="dropdown">
+        <button class="dropbtn">Select Category</button>
+        <div class="dropdown-content">
+            <a href="#">Business</a>
+            <a href="#">Entertainment</a>
+            <a href="#">General</a>
+            <a href="#">Health</a>
+            <a href="#">Science</a>
+            <a href="#">Sports</a>
+            <a href="#">Technology</a>
+        </div>
+        <button class="submit-btn">Submit</button>
+    </div>
+</div>
+
+</body>
+</html>

@@ -9,24 +9,14 @@
 <body>
 
 <div class="news-container">
+    {% for item in news %}
     <div class="news-item">
-        {%for item in news%}
-        <img src="news_image_1.jpg" alt="News Image 1">
-        <h2>News Headline 1</h2>
-        <p class="news-summary">Summary of the news article goes here.</p>
-        <button class="read-more-btn">Read More</button>
-        {% endfor %}
+        <img src="{{ item.urlToImage }}" alt="News Image">
+        <h2>{{ item.Title }}</h2>
+        <p class="news-summary">{{ item.Description }}</p>
+        <a href="{{ item.url }}" class="read-more-btn">Read More</a>
     </div>
-
-    <div class="news-item">
-        <img src="news_image_2.jpg" alt="News Image 2">
-        <h2>News Headline 2</h2>
-        <p class="news-summary">Summary of the news article goes here.</p>
-        <button class="read-more-btn">Read More</button>
-    </div>
-
-    <!-- Add more news items as needed -->
-
+    {% endfor %}
 </div>
 
 </body>

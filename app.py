@@ -1,8 +1,9 @@
 import json
 from flask import Flask, abort, jsonify,render_template,request,redirect, url_for
 from newsapi import NewsApiClient
-import redis,sys,timedelta
-import requests
+import redis,sys
+from datetime import datetime, timedelta
+import requests,time
 app=Flask(__name__)
 
 
@@ -25,16 +26,20 @@ def get_news_data_from_cache(key: str) -> list:
     try:
         cache_data = redis_client.get(key)
         print("here is your cached data")
+        print("this is the key in getting news from cache- "+key)
         print(cache_data)
         return cache_data
     except Exception as error:
         print(f"Error Occured : {error}")
 
 
-# Add data to the redis cache with 3600s expiery
+# Add data to the redis cache with 3600s expiry
 def put_news_data_to_cache(key: str, value: list) -> bool:
     try:
-        state = redis_client.setex(key, timedelta(seconds=3600), value=json.dumps(value))
+        data=json.dumps(value)
+        # print(json.dumps(value))
+        state = redis_client.setex(key, timedelta(seconds=3600), data)
+        # time.sleep(5)
         return state
     except Exception as error:
         print(f"Error Occured : {error}")
@@ -77,7 +82,7 @@ api = NewsApiClient(api_key='30d7eb960aaf452293896183aaf05c55')
 news=[]
 @app.route('/')
 def frontend():
-    return render_template('index.html',news=news)
+    return render_template('homepage.html',news=news)
 
 @app.route("/news/<category>/",methods=["GET","POST"])
 def handle_api_call(category):

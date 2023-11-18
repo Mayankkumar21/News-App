@@ -27,7 +27,7 @@ def get_news_data_from_cache(key: str) -> list:
         cache_data = redis_client.get(key)
         print("here is your cached data")
         print("this is the key in getting news from cache- "+key)
-        print(cache_data)
+        # print(cache_data)
         return cache_data
     except Exception as error:
         print(f"Error Occured : {error}")
@@ -49,7 +49,7 @@ def put_news_data_to_cache(key: str, value: list) -> bool:
 def get_data(category: str) -> list:
     try:
         # Check data availability in Redis
-        print("Checking redis for key")
+        # print("Checking redis for key")
         data = get_news_data_from_cache(key=category)
         # data=[]
         # If Aavailabe serve from cache
@@ -82,7 +82,7 @@ api = NewsApiClient(api_key='30d7eb960aaf452293896183aaf05c55')
 news=[]
 @app.route('/')
 def frontend():
-    return render_template('homepage.html',news=news)
+    return render_template("homepage.html")
 
 @app.route("/news/<category>/",methods=["GET","POST"])
 def handle_api_call(category):
@@ -92,6 +92,63 @@ def handle_api_call(category):
     news=data
     return render_template('index.html', news=news)
 
+@app.route("/search/",methods=["GET","POST"])
+def search_query():
+    query_to_search=request.form.get('query')
+    print(query_to_search)
+    data=search_data(query_to_search)
+    news=data
+    return render_template("index.html",news=news)
+
+
+
+def search_data(query):
+    try:
+        # Check data availability in Redis
+        # print("Checking redis for key")
+        data = get_news_data_from_cache(key=query)
+        # data=[]
+        # If Aavailabe serve from cache
+        if data is not None:
+            print("Data Obtained From Cache")
+            data = json.loads(data)
+            return data
+        else:
+            # Get data from API
+            data = search_from_api(query)
+
+            # Check response
+            if len(data)>0:
+                print("Data Obtained From API")
+                # data = data.content
+
+                # Add data to cache
+                state = put_news_data_to_cache(key=query, value=data)
+                if state is True:
+                    print("Data Added to Redis")
+            return data
+    except Exception as error:
+        print(f"Error Occured : {error}")
+    
+
+
+def search_from_api(query):
+    news_obj=api.get_everything(q=query)
+    
+    articles=news_obj['articles']
+    
+    # print(articles)
+    data=[]
+    # print("We reached get_news_from_api")
+    for article in articles:
+        data.append({"Title":article['title'],
+                     "Description":article['description'],
+                     "urlToImage":article['urlToImage'],
+                     "url":article['url'],
+                     "publishedAt":article['publishedAt']
+                     })
+    return data
+    
 
 
 def get_news_from_api(cat):

@@ -13,22 +13,22 @@
         <h1>News Page</h1>
         <div class="search-container">
             <input type="text" placeholder="Search...">
-            <button class="search-btn">Search</button>
+            <button type="button" class="search-btn"onclick="window.location.href='{{ url_for( 'dataTablePage' , table='Y' ) }}';">Search</button>
         </div>
     </header>
 
     <div class="dropdown">
         <button class="dropbtn">Select Category</button>
         <div class="dropdown-content">
-            <a href="#">Business</a>
-            <a href="#">Entertainment</a>
-            <a href="#">General</a>
-            <a href="#">Health</a>
-            <a href="#">Science</a>
-            <a href="#">Sports</a>
-            <a href="#">Technology</a>
+            
+            <a href="{{ url_for('handle_api_call',category="business") }}" >Business</a>
+            <a href="{{ url_for('handle_api_call',category="entertainment") }}" style="background-image: url('entertainment-category.jpg');">Entertainment</a>
+            <a href="{{ url_for('handle_api_call',category="general") }}" style="background-image: url('general-category.jpg');">General</a>
+            <a href="{{ url_for('handle_api_call',category="health") }}" style="background-image: url('health-category.jpg');">Health</a>
+            <a href="{{ url_for('handle_api_call',category="science") }}" style="background-image: url('science-category.jpg');">Science</a>
+            <a href="{{ url_for('handle_api_call',category="sports") }}" style="background-image: url('sports-category.jpg');">Sports</a>
+            <a href="{{ url_for('handle_api_call',category="technology") }}" style="background-image: url('technology-category.jpg');">Technology</a>
         </div>
-        <button class="submit-btn">Submit</button>
     </div>
 </div>
 

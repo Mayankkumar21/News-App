@@ -82,7 +82,7 @@ api = NewsApiClient(api_key='30d7eb960aaf452293896183aaf05c55')
 news=[]
 @app.route('/')
 def frontend():
-    return render_template('homepage.html',news=news)
+    return render_template("homepage.html")
 
 @app.route("/news/<category>/",methods=["GET","POST"])
 def handle_api_call(category):

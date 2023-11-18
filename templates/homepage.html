@@ -12,8 +12,10 @@
     <header>
         <h1>News Page</h1>
         <div class="search-container">
-            <input type="text" placeholder="Search...">
-            <button type="button" class="search-btn"onclick="window.location.href='{{ url_for( 'dataTablePage' , table='Y' ) }}';">Search</button>
+            <form id="searchQuery" method="post" action="{{url_for('search_query')}}">
+            <input type="text" placeholder="Search..." class="form-control" id="query" name="query" required>
+            <button type="submit" class="search-btn" >Search</button>
+            </form>
         </div>
     </header>
 

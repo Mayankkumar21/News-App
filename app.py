@@ -25,9 +25,7 @@ redis_client = redis_connect()
 def get_news_data_from_cache(key: str) -> list:
     try:
         cache_data = redis_client.get(key)
-        print("here is your cached data")
-        print("this is the key in getting news from cache- "+key)
-        # print(cache_data)
+       
         return cache_data
     except Exception as error:
         print(f"Error Occured : {error}")
@@ -37,10 +35,9 @@ def get_news_data_from_cache(key: str) -> list:
 def put_news_data_to_cache(key: str, value: list) -> bool:
     try:
         data=json.dumps(value)
-        # print(json.dumps(value))
         state = redis_client.setex(key, timedelta(seconds=3600), data)
-        # time.sleep(5)
         return state
+    
     except Exception as error:
         print(f"Error Occured : {error}")
         
@@ -49,9 +46,7 @@ def put_news_data_to_cache(key: str, value: list) -> bool:
 def get_data(category: str) -> list:
     try:
         # Check data availability in Redis
-        # print("Checking redis for key")
         data = get_news_data_from_cache(key=category)
-        # data=[]
         # If Aavailabe serve from cache
         if data is not None:
             print("Data Obtained From Cache")
@@ -61,10 +56,8 @@ def get_data(category: str) -> list:
             # Get data from API
             data = get_news_from_api(category)
 
-            # Check response
             if len(data)>0:
                 print("Data Obtained From API")
-                # data = data.content
 
                 # Add data to cache
                 state = put_news_data_to_cache(key=category, value=data)
@@ -78,7 +71,6 @@ def get_data(category: str) -> list:
 
 
 api = NewsApiClient(api_key='30d7eb960aaf452293896183aaf05c55')
-#api key- 30d7eb960aaf452293896183aaf05c55
 news=[]
 @app.route('/')
 def frontend():
@@ -87,7 +79,6 @@ def frontend():
 @app.route("/news/<category>/",methods=["GET","POST"])
 def handle_api_call(category):
     data=get_data(category=category)
-    # print(data)
     global news
     news=data
     return render_template('index.html', news=news)
@@ -98,6 +89,7 @@ def search_query():
     print(query_to_search)
     data=search_data(query_to_search)
     news=data
+    
     return render_template("index.html",news=news)
 
 
@@ -105,9 +97,8 @@ def search_query():
 def search_data(query):
     try:
         # Check data availability in Redis
-        # print("Checking redis for key")
         data = get_news_data_from_cache(key=query)
-        # data=[]
+        
         # If Aavailabe serve from cache
         if data is not None:
             print("Data Obtained From Cache")
@@ -117,16 +108,15 @@ def search_data(query):
             # Get data from API
             data = search_from_api(query)
 
-            # Check response
             if len(data)>0:
                 print("Data Obtained From API")
-                # data = data.content
 
                 # Add data to cache
                 state = put_news_data_to_cache(key=query, value=data)
                 if state is True:
                     print("Data Added to Redis")
             return data
+        
     except Exception as error:
         print(f"Error Occured : {error}")
     
@@ -134,12 +124,9 @@ def search_data(query):
 
 def search_from_api(query):
     news_obj=api.get_everything(q=query)
-    
     articles=news_obj['articles']
     
-    # print(articles)
     data=[]
-    # print("We reached get_news_from_api")
     for article in articles:
         data.append({"Title":article['title'],
                      "Description":article['description'],
@@ -147,6 +134,7 @@ def search_from_api(query):
                      "url":article['url'],
                      "publishedAt":article['publishedAt']
                      })
+        
     return data
     
 
@@ -156,7 +144,6 @@ def get_news_from_api(cat):
     
     articles=news_obj['articles']
     
-    # print(articles)
     data=[]
     print("We reached get_news_from_api")
     for article in articles:
@@ -166,9 +153,8 @@ def get_news_from_api(cat):
                      "url":article['url'],
                      "publishedAt":article['publishedAt']
                      })
+        
     return data
-    
-    
     
     
 app.run(debug=True)

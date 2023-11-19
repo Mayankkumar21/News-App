@@ -6,14 +6,14 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>News Page</title>
 </head>
-<body>
+<body style="background-image: url('static/background2.jpeg'); background-size: cover; background-repeat: no-repeat;">
 
 <div class="news-container">
     <header>
-        <h1>News Page</h1>
+        <h1 class="news-title">News Page</h1>
         <div class="search-container">
             <form id="searchQuery" method="post" action="{{url_for('search_query')}}">
-            <input type="text" placeholder="Search..." class="form-control" id="query" name="query" required>
+            <input type="text" placeholder="Type to search" class="form-control" id="query" name="query" required>
             <button type="submit" class="search-btn" >Search</button>
             </form>
         </div>
@@ -33,6 +33,6 @@
         </div>
     </div>
 </div>
-
+<p>Made by Mayank Kumar</p>
 </body>
 </html>

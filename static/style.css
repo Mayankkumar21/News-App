@@ -1,7 +1,7 @@
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
-    background-image: url('background.jpg'); /* Replace 'background.jpg' with your actual background image */
+    background-image: url('static/background.jpeg'); /* Replace 'background.jpg' with your actual background image */
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -9,6 +9,7 @@ body {
     flex-direction: column;
     justify-content: center;
 }
+
 
 .news-container {
     background-color: rgba(255, 255, 255, 0.8);
@@ -28,6 +29,7 @@ h1 {
 }
 
 .search-container {
+    color:black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,4 +94,9 @@ input[type="text"] {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+.search-bar {
+    background-color: #f0f0f0; /* Use a light grey color as the background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+    padding: 10px; /* Add padding to make it visually appealing */
 }

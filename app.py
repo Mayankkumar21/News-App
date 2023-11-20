@@ -4,26 +4,24 @@ from newsapi import NewsApiClient
 import redis,sys
 from datetime import datetime, timedelta
 import requests,time,os
-# from dotenv import load_dotenv, dotenv_values
+from dotenv import load_dotenv, dotenv_values
 
 app=Flask(__name__)
 
-# load_dotenv()
+load_dotenv()
 
-# redis_hash =({
-#   "url": os.getenv("UPSTASH_REDIS_REST_URL"),
-#   "token": os.getenv("UPSTASH_REDIS_REST_TOKEN"),
-#   "PORT":os.getenv("PORT")
-# })
-UPSTASH_REDIS_REST_URL="apn1-singular-whippet-34240.upstash.io"
-UPSTASH_REDIS_REST_TOKEN="b36b99cae8004776960edb231458ca88"
-PORT="34240"
+redis_hash =({
+  "url": os.getenv("UPSTASH_REDIS_REST_URL"),
+  "token": os.getenv("UPSTASH_REDIS_REST_TOKEN"),
+  "PORT":os.getenv("PORT")
+})
 
-# print(redis_hash["url"])
+
+print(redis_hash["url"])
 # Create connectivity to the Redis server
 def redis_connect():
     try:
-        client = redis.Redis(host=UPSTASH_REDIS_REST_URL,port=PORT,password=UPSTASH_REDIS_REST_TOKEN,db=0,socket_timeout=5,)
+        client = redis.Redis(host=redis_hash["url"],port=redis_hash["PORT"],password=redis_hash["token"],db=0,socket_timeout=5,)
         ping = client.ping()
         if ping is True:
             return client

@@ -3,14 +3,24 @@ from flask import Flask, abort, jsonify,render_template,request,redirect, url_fo
 from newsapi import NewsApiClient
 import redis,sys
 from datetime import datetime, timedelta
-import requests,time
+import requests,time,os
+from dotenv import load_dotenv, dotenv_values
+
 app=Flask(__name__)
 
+load_dotenv()
 
+redis_hash =({
+  "url": os.getenv("UPSTASH_REDIS_REST_URL"),
+  "token": os.getenv("UPSTASH_REDIS_REST_TOKEN"),
+  "PORT":os.getenv("PORT")
+})
+
+print(redis_hash["url"])
 # Create connectivity to the Redis server
 def redis_connect():
     try:
-        client = redis.Redis(host="localhost",port=6379,db=0,socket_timeout=5,)
+        client = redis.Redis(host=redis_hash["url"],port=redis_hash["PORT"],password=redis_hash["token"],db=0,socket_timeout=5,)
         ping = client.ping()
         if ping is True:
             return client
@@ -145,7 +155,6 @@ def get_news_from_api(cat):
     articles=news_obj['articles']
     
     data=[]
-    print("We reached get_news_from_api")
     for article in articles:
         data.append({"Title":article['title'],
                      "Description":article['description'],

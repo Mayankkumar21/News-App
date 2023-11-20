@@ -1,11 +1,18 @@
 {
     "builds": [
-        {"src": "app.py", "use": "@vercel/python"},
-        {"src": "index.html", "use": "@vercel/templates"},
-        {"src": "homepage.html", "use": "@vercel/templates"},
-        {"src": "styles.css", "use": "@vercel/static"},
-        {"src": "style.css", "use": "@vercel/static"}
-        
+        {
+            "src": "app.py",
+            "use": "@vercel/python"
+        },
+        {
+            "src": "static/**",
+            "use": "@vercel/static"
+        }
     ],
-    "routes": [{"src": "/(.*)", "dest": "app.py"}]
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "app.py"
+        }
+    ]
 }

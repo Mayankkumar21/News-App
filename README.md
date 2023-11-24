@@ -6,7 +6,7 @@
 
 ```bash
 
-git  clone  https://github.com/Mayankkumar21/News-App.git
+git clone https://github.com/Mayankkumar21/News-App.git
 
 ```
 
@@ -28,7 +28,7 @@ Visit https://www.python.org/downloads/
 
 ```bash
 
-python3  -m  venv  .venv
+python3 -m venv .venv
 
 ```
 
@@ -38,7 +38,7 @@ python3  -m  venv  .venv
 
 ```bash
 
-source  .venv/bin/activate
+source .venv/bin/activate
 
 ```
 

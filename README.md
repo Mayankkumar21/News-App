@@ -61,6 +61,12 @@ pip3 install flask news-api redis
 Get more info on installing redis and redis server here https://redis.io/docs/install/install-redis/
 
   
+###
+Project is set to run on a cloud redis DB
+
+Create your account at https://upstash.com/ for free cloud DB
+
+Enter the required fields in .env file and run the project
 
 ### Check if redis is installed correctly(for mac OS)
 

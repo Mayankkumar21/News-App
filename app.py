@@ -33,7 +33,7 @@ def redis_connect():
 redis_client = redis_connect()
 
 
-def get_news_data_from_cache(key: str) -> list:
+def get_news_data_from_cache(key:str) -> list:
     try:
         cache_data = redis_client.get(key)
        

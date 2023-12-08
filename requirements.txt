@@ -1,0 +1,5 @@
+Flask
+Gunicorn
+Redis
+python-dotenv
+newsapi-python

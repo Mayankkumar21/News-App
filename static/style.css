@@ -1,7 +1,7 @@
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
-    background-image: url('static/background.jpeg'); /* Replace 'background.jpg' with your actual background image */
+    background-image: url('static/background.jpeg'); 
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -96,7 +96,7 @@ input[type="text"] {
     display: block;
 }
 .search-bar {
-    background-color: #f0f0f0; /* Use a light grey color as the background */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
-    padding: 10px; /* Add padding to make it visually appealing */
+    background-color: #f0f0f0; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    padding: 10px; 
 }

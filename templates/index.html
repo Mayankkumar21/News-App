@@ -4,24 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dark-theme.css') }}" id="dark-theme-style">
     <title>News Web App</title>
 </head>
 <body>
-
-<div class="news-container">
-    <h1 class="news-title">News Page</h1>
-
-
-    {% for item in news %}
-    <div class="news-item">
-        <img src="{{ item.urlToImage }}" alt="News Image">
-        <h2>{{ item.Title }}</h2>
-        <p class="news-summary">{{ item.Description }}</p>
-        <a href="{{ item.url }}" class="read-more-btn">Read More</a>
+    <div class="header">
+        <h1 class="news-title">News Page</h1>
+        <button id="dark-mode-toggle" class="dark-mode-toggle">Toggle Dark Mode</button>
     </div>
-    {% endfor %}
-</div>
-<p>Made by Mayank Kumar</p>
 
+    <div class="news-container">
+        {% for item in news %}
+        <div class="news-item">
+            <img src="{{ item.urlToImage }}" alt="News Image">
+            <h2>{{ item.Title }}</h2>
+            <p class="news-summary">{{ item.Description }}</p>
+            <a href="{{ item.url }}" class="read-more-btn">Read More</a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <p>Made by Mayank Kumar</p>
+
+    <script>
+        const darkModeToggleBtn = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+        const newsContainer = document.querySelector('.news-container');
+        const header=document.querySelector('.header')
+
+        darkModeToggleBtn.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            newsContainer.classList.toggle('dark-mode');
+            header.classList.toggle('dark-mode');
+            
+        });
+    </script>
 </body>
 </html>

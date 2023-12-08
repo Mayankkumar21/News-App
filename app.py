@@ -167,4 +167,4 @@ def get_news_from_api(cat):
     return data
     
     
-app.run(debug=True)
+# app.run(debug=True)

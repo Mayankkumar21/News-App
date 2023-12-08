@@ -1,5 +1,8 @@
 # News-App
 
+### Check live demo of app
+#### https://news-app-uexl.onrender.com/
+
 ### Running the project locally
 
   

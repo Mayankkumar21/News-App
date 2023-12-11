@@ -1,7 +1,7 @@
 # News-App
 
 ### Check live demo of app
-#### https://news-app-uexl.onrender.com/
+#### [https://news-app-uexl.onrender.com/](https://news-app-mayank2107.vercel.app/)
 
 ### Running the project locally
 

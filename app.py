@@ -83,7 +83,7 @@ def get_data(category: str) -> list:
 
 api = NewsApiClient(api_key='30d7eb960aaf452293896183aaf05c55')
 news=[]
-@app.route('/')
+@app.route('/',methods=["GET"])
 def frontend():
     return render_template("homepage.html")
 

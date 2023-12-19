@@ -283,9 +283,9 @@ input[type="text"] {
     opacity: 1;
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1370px) and (max-width: 1366px) {
   .btn-82 {
-      align-content: center;
+      margin-left:25px;
   }
 }
 

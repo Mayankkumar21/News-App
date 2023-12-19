@@ -102,11 +102,7 @@ input[type="text"] {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
     padding: 10px; 
 }
-@media only screen and (min-width: 1370px) {
-  .btn-82 {
-      margin-left:25px;
-  }
-}
+
 .btn-82,
 .btn-82 *,
 .btn-82 :after,
@@ -287,6 +283,11 @@ input[type="text"] {
   to {
     opacity: 1;
   }
+}
+@media only screen and (min-width: 1370px) {
+  #submitButton {
+    text-align: center;
+ }
 }
 
 

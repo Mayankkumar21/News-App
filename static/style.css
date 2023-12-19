@@ -102,6 +102,11 @@ input[type="text"] {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
     padding: 10px; 
 }
+@media only screen and (min-width: 1370px) {
+  .btn-82 {
+      margin-left:25px;
+  }
+}
 .btn-82,
 .btn-82 *,
 .btn-82 :after,
@@ -148,7 +153,7 @@ input[type="text"] {
   box-sizing: border-box;
   display: block;
   overflow: hidden;
-  padding: 1rem 3rem;
+  padding: 0.7rem 2.7rem;
   position: relative;
   text-transform: uppercase;
 }
@@ -283,10 +288,6 @@ input[type="text"] {
     opacity: 1;
   }
 }
-@media only screen and (min-width: 1370px) {
-  .btn-82 {
-      margin-left:25px;
-  }
-}
+
 
 

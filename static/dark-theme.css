@@ -29,8 +29,8 @@ h2.dark-mode {
     color: #fff;
 }
 
-.news-summary.dark-mode {
-    color: #999;
+.news-item.news-summary.dark-mode {
+    color: #fff;
 }
 
 .read-more-btn.dark-mode {

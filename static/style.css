@@ -283,10 +283,10 @@ input[type="text"] {
     opacity: 1;
   }
 }
-@media only screen and (mid-width:1200px){
-  .search-box {
-
-    margin-left: 10px;
+@media only screen and (min-width: 768px) {
+  .btn-82 {
+      margin-left: auto; 
   }
 }
+
 

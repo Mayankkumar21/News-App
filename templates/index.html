@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='dark-theme.css') }}" id="dark-theme-style">
     <title>News Web App</title>
 </head>
 <body>
@@ -29,13 +28,10 @@
     <script>
         const darkModeToggleBtn = document.getElementById('dark-mode-toggle');
         const body = document.body;
-        const newsContainer = document.querySelector('.news-container');
-        const header=document.querySelector('.header')
-
+       
         darkModeToggleBtn.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            newsContainer.classList.toggle('dark-mode');
-            header.classList.toggle('dark-mode');
+            body.classList.toggle('dark-theme');
+            
             
         });
     </script>

@@ -47,13 +47,13 @@ source .venv/bin/activate
 
   
 
-### Installing external libraries
+### Installing dependencies
 
   
 
 ```bash
 
-pip3 install flask news-api redis
+pip3 install -r requirements. txt
 
 ```
 
